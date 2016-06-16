@@ -83,7 +83,13 @@ function findFile(filesJson, file) {
 
 function getString(data) {
     var buf = new Buffer(data);
-    return buf.toString('utf8');
+    var count = 0;
+    for(var i = 0; i < data.length; i++){
+        if(data[i] === 0){
+            count = i;
+        }
+    }
+    return buf.toString('ascii',0,count).replace(/\0/g, '');
 }
 function getInt32(data) {
     var buf = new Buffer(data);
@@ -140,7 +146,9 @@ function decode(fileName) {
                 ALARM_CODE2: getInt(sub(temp, 0, 2)),
                 LARM_CODE3: getInt(sub(temp, 0, 2))
             };
-
+            if(count == 4187){
+                console.log(obj);
+            }
             count++;
         }
     });
