@@ -1,5 +1,8 @@
 {
 	"server": {
 		"port": 8000
-	}
+	},
+	"rateInMillis": 5000,
+	"machineName": "testMachine",
+	"fileDirectory" : "/Users/gregyotz/source/bbp/cnc-batch-process/cnc/"
 }
