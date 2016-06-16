@@ -7,7 +7,7 @@ decode(fileName);
 
 function getString(data){
     var buf = new Buffer(data);
-    return buf.toString('utf8',0,data.length);
+    return buf.toString('utf8');
 }
 function getInt32(data){
     var buf = new Buffer(data);
@@ -64,9 +64,11 @@ function decode(fileName) {
                 ALARM_CODE1:    getInt(     sub(temp, 0,        2)),
                 ALARM_CODE2:    getInt(     sub(temp, 0,        2)),
                 LARM_CODE3:     getInt(     sub(temp, 0,        2))
+            };
+            if(count == 4187){
+                console.log(obj);
             }
 
-            console.log(obj);
 
             count++;
         }
