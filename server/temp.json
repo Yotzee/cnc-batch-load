@@ -1,0 +1,33 @@
+
+{
+  SPDL_FB1:
+  SPDL_FB2:
+  SPDL_FB3:
+  SPDL_FB4:
+  ATMD_ALARM:
+  MNMD_NA:
+  SGNL_SGLB:
+  SGNL_CUT:
+  SPDL_ROT1:
+  unknown1:
+  SPDL_ROT2:
+  unknown2:
+  SPDL_ROT3:
+  SPDL_ROT4:
+  PARTS_CNT:
+  SPDL_OVRD1:
+  SPDL_OVRD2:
+  SPDL_OVRD3:
+  SPDL_OVRD4:
+  FEED_OVRD:
+  RAPID_OVRD:
+  WNO_NO:
+  unknown3:
+  WNO_ATRB:
+  unknown:
+  ALARM_ATRB:
+  ALARM_NO:
+  ALARM_CODE1:
+  ALARM_CODE2:
+  LARM_CODE3:
+}
