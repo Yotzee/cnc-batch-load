@@ -1,8 +1,17 @@
 {
-	"server": {
-		"port": 8000
-	},
-	"rateInMillis": 5000,
-	"machineName": "testMachine",
-	"fileDirectory" : "/Users/gregyotz/source/bbp/cnc-batch-process/cnc/"
+  "server": {
+    "port": 8000
+  },
+  "rateInMillis": 5000,
+  "machineName": "testMachine",
+  "fileDirectory": "/Users/gregyotz/source/bbp/cnc-batch-process/cnc/",
+  "loggerConfig": {
+    "appenders": [
+      {
+        "type": "console"
+      }
+    ],
+    "replaceConsole": true
+  }
 }
+
