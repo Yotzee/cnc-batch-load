@@ -1,5 +1,4 @@
 var sql = require('mssql');
-var q = require('q');
 var config = {
     user: 'nodeuser',
     password: 'Node1234',
@@ -8,8 +7,8 @@ var config = {
 };
 
 exports.createMachine = function (machineName) {
-    return new Promise(function(resolve,reject){
-        sql.connect(config).then(function() {
+    return new Promise(function (resolve, reject) {
+        sql.connect(config).then(function () {
             new sql.Request()
                 .query('insert into machines (machineName) values (\'' + machineName + '\');')
                 .then(function (machine) {
@@ -23,12 +22,12 @@ exports.createMachine = function (machineName) {
 };
 
 exports.getMachine = function (machineName) {
-    return new Promise(function(resolve,reject){
-        sql.connect(config).then(function() {
+    return new Promise(function (resolve, reject) {
+        sql.connect(config).then(function () {
             new sql.Request()
-                .query('select * from machines where machineName =\'' + machineName +'\';')
+                .query('select * from machines where machineName =\'' + machineName + '\';')
                 .then(function (machine) {
-                    resolve(machine);
+                    resolve(machine[0]);
                 })
                 .catch(function (err) {
                     reject(err);
@@ -39,21 +38,33 @@ exports.getMachine = function (machineName) {
 };
 
 exports.getMachines = function () {
-    sql.connect(config).then(function() {
-        new sql.Request()
-            .query('select * from machines;')
-            .then(function (machines) {
-                console.dir(machines);
-                return machines
-            })
-            .catch(function (err) {
-                console.dir(err);
-            });
+    return new Promise(function (resolve, reject) {
+        sql.connect(config)
+            .then(function () {
+                new sql.Request()
+                    .query('select * from machines;')
+                    .then(function (machines) {
+                        resolve(machines);
+                    })
+                    .catch(function (err) {
+                        reject(err);
+                    });
 
+            })
     });
 };
 
-exports.saveWorkRow = function (machineName, jsonObj) {
-
-
+exports.saveWorkRow = function (workObj, machine) {
+    return new Promise(function (resolve, reject) {
+        sql.connect(config).then(function () {
+            new sql.Request()
+                .query('insert into Work (machineId) values (\'' + machine.id + '\');')
+                .then(function (results) {
+                    resolve(results);
+                })
+                .catch(function (err) {
+                    reject(err);
+                });
+        });
+    });
 };
