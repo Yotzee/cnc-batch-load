@@ -13,6 +13,18 @@ exports.findFile = function(filesJson, file) {
     return filesJson.files[i];
 };
 
+exports.getFilesInDir = function(dir){
+    return new Promise(function(resolve,reject){
+        try{
+            fs.readdir(dir, function (err, list) {
+                resolve(list);
+            });
+        }catch(err){
+            console.log('Error getting files' + err);
+            reject(err);
+        }
+    });
+}
 exports.getString = function(data) {
     var buf = new Buffer(data);
     var count = 0;
